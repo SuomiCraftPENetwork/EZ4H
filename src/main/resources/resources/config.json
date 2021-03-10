@@ -5,6 +5,7 @@
   "be_port": 19132,
   "player-list": "",
   "whitelist": "",
+  "auth-key": "",
   "auth": {
     "autologin": false,
     "xbox-auth": false

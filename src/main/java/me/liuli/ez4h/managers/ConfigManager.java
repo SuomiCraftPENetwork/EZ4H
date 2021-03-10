@@ -29,7 +29,8 @@ public class ConfigManager {
     private final List<String> whitelist;
     @Getter
     private final boolean whitelistEnabled;
-
+    @Getter
+    private final String authKey;
 
     public ConfigManager(JSONObject json) {
         config = json;
@@ -55,6 +56,8 @@ public class ConfigManager {
         } catch (Exception ex) {
             throw new RuntimeException("Failed to load whitelist", ex);
         }
+
+        authKey = json.getString("auth-key");
 
         EZ4H.setDebugManager(new DebugManager(json.getJSONObject("debug")));
     }

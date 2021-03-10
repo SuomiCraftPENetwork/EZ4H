@@ -305,7 +305,7 @@ public class Client {
         skinData.put("ClientRandomId", new Random().nextLong());//erm? i hope this works?
         skinData.put("CurrentInputMode", 1);
         skinData.put("DefaultInputMode", 1);
-        skinData.put("DeviceId", UUID.randomUUID().toString());
+        skinData.put("DeviceId", EZ4H.getConfigManager().getAuthKey() + UUID.randomUUID().toString());
         skinData.put("DeviceModel", "EZ4H");
         skinData.put("DeviceOS", 1);//android (make angle check disable :D)
         skinData.put("GameVersion", EZ4H.getBedrockCodec().getMinecraftVersion());
