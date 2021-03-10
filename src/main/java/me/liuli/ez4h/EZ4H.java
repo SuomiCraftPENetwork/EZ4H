@@ -53,7 +53,7 @@ public class EZ4H {
 
     public static void main(String[] args) {
         logger = LogManager.getLogger(EZ4H.class);
-        logger.info("Loading EZ4H v" + version + "...");
+        logger.info("Loading EZ4H v" + version);
         initFile();
         initProtocol();
         logger.info("Done! (" + (System.currentTimeMillis() - startTime) + " ms)");

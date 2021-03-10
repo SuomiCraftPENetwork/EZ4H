@@ -49,7 +49,9 @@ public class ConfigManager {
             String str = json.getString("whitelist");
             whitelist = Arrays.asList(str.split(":"));
             whitelistEnabled = str.length() > 0;
-            EZ4H.getLogger().info("Whitelist enabled");
+            if (whitelistEnabled) {
+                EZ4H.getLogger().info("Whitelist enabled");
+            }
         } catch (Exception ex) {
             throw new RuntimeException("Failed to load whitelist", ex);
         }
