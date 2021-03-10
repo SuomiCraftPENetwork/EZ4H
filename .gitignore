@@ -4,3 +4,4 @@
 /logs
 *.log
 config.json
+dependency-reduced-pom.xml
