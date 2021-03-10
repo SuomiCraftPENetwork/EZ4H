@@ -29,11 +29,11 @@ import java.util.UUID;
 public class Xbox {
     private final String accessToken;
 
-    private final String xboxUserAuthURL = "https://user.auth.xboxlive.com/user/authenticate";
-    private final String xboxAuthorizeURL = "https://xsts.auth.xboxlive.com/xsts/authorize";
-    private final String xboxDeviceAuthURL = "https://device.auth.xboxlive.com/device/authenticate";
-    private final String xboxTitleAuthURL = "https://title.auth.xboxlive.com/title/authenticate";
-    private final String minecraftAuthURL = "https://multiplayer.minecraft.net/authentication";
+    private static final String xboxUserAuthURL = "https://user.auth.xboxlive.com/user/authenticate";
+    private static final String xboxAuthorizeURL = "https://xsts.auth.xboxlive.com/xsts/authorize";
+    private static final String xboxDeviceAuthURL = "https://device.auth.xboxlive.com/device/authenticate";
+    private static final String xboxTitleAuthURL = "https://title.auth.xboxlive.com/title/authenticate";
+    private static final String minecraftAuthURL = "https://multiplayer.minecraft.net/authentication";
 
     public Xbox(String accessToken) {
         this.accessToken = accessToken;
@@ -73,7 +73,7 @@ public class Xbox {
         proofKey.put("x", this.getProofKeyX(publicKey));
         proofKey.put("y", this.getProofKeyY(publicKey));
 
-        URL url = new URL(this.xboxUserAuthURL);
+        URL url = new URL(xboxUserAuthURL);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
@@ -112,7 +112,7 @@ public class Xbox {
         proofKey.put("x", this.getProofKeyX(publicKey));
         proofKey.put("y", this.getProofKeyY(publicKey));
 
-        URL url = new URL(this.xboxDeviceAuthURL);
+        URL url = new URL(xboxDeviceAuthURL);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
@@ -150,7 +150,7 @@ public class Xbox {
         proofKey.put("x", this.getProofKeyX(publicKey));
         proofKey.put("y", this.getProofKeyY(publicKey));
 
-        URL url = new URL(this.xboxTitleAuthURL);
+        URL url = new URL(xboxTitleAuthURL);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
@@ -193,7 +193,7 @@ public class Xbox {
         proofKey.put("x", this.getProofKeyX(publicKey));
         proofKey.put("y", this.getProofKeyY(publicKey));
 
-        URL url = new URL(this.xboxAuthorizeURL);
+        URL url = new URL(xboxAuthorizeURL);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
@@ -214,7 +214,7 @@ public class Xbox {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("identityPublicKey", pubKeyData);
 
-        URL url = new URL(this.minecraftAuthURL);
+        URL url = new URL(minecraftAuthURL);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");

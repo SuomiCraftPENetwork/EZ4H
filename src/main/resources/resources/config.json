@@ -1,12 +1,13 @@
 {
   "je_host": "127.0.0.1",
   "je_port": 25565,
-  "be_host": "127.0.0.1",
+  "be_host": "suomicraftpe.tk",
   "be_port": 19132,
-  "player-list": "A §bEZ§94§bH§f§r Proxyed Server!\nhttps://github.com/Project-EZ4H/EZ4H",
+  "player-list": "",
+  "whitelist": "",
   "auth": {
     "autologin": false,
-    "xbox-auth": true
+    "xbox-auth": false
   },
   "debug": {
     "all-packet": false,

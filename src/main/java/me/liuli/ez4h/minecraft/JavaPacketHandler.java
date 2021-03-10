@@ -34,13 +34,22 @@ public class JavaPacketHandler extends SessionAdapter {
             }
             if (event.getPacket().getClass().equals(LoginStartPacket.class)) {
                 LoginStartPacket lpacket = event.getPacket();
+                if (EZ4H.getConfigManager().isWhitelistEnabled() && !EZ4H.getConfigManager().getWhitelist().contains(lpacket.getUsername().toLowerCase())) {
+                    event.getSession().removeListener(this);
+                    event.getSession().disconnect("Server is white-listed");
+                    EZ4H.getLogger().info(lpacket.getUsername() + "[" + event.getSession().getHost() + ":" + event.getSession().getPort() + "] was not whitelisted");
+                    return;
+                }
                 if (!EZ4H.getConfigManager().isXboxAuth() || EZ4H.getAuthManager().getAccessTokens().containsKey(lpacket.getUsername())) {
                     Client client_n = new Client(event, lpacket.getUsername());
                     EZ4H.addClient(lpacket.getUsername(), client_n);
                 } else {
                     event.getSession().removeListener(this);
+                    event.getSession().disconnect("Not authenticated");
+                    EZ4H.getLogger().info(lpacket.getUsername() + "[" + event.getSession().getHost() + ":" + event.getSession().getPort() + "] was not authenticated");
+                    return;
                 }
-                EZ4H.getLogger().info(lpacket.getUsername() + "[" + event.getSession().getHost() + ":" + event.getSession().getPort() + "] JOINED.");
+                EZ4H.getLogger().info(lpacket.getUsername() + "[" + event.getSession().getHost() + ":" + event.getSession().getPort() + "] connected");
             } else {
                 if (client != null) {
                     client.addPacket(packet);

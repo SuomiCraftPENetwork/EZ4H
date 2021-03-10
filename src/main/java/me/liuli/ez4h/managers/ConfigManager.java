@@ -5,6 +5,9 @@ import com.github.steveice10.mc.protocol.data.message.TextMessage;
 import lombok.Getter;
 import me.liuli.ez4h.EZ4H;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ConfigManager {
     @Getter
     private final JSONObject config;
@@ -22,6 +25,10 @@ public class ConfigManager {
     private final boolean autoLogin;
     @Getter
     private final TextMessage playerList;
+    @Getter
+    private final List<String> whitelist;
+    @Getter
+    private final boolean whitelistEnabled;
 
 
     public ConfigManager(JSONObject json) {
@@ -37,6 +44,15 @@ public class ConfigManager {
         autoLogin = auth.getBoolean("autologin");
         xboxAuth = auth.getBoolean("xbox-auth");
 //        mojangSkin=advanced.getBoolean("mojang-skin");
+
+        try {
+            String str = json.getString("whitelist");
+            whitelist = Arrays.asList(str.split(":"));
+            whitelistEnabled = str.length() > 0;
+            EZ4H.getLogger().info("Whitelist enabled");
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to load whitelist", ex);
+        }
 
         EZ4H.setDebugManager(new DebugManager(json.getJSONObject("debug")));
     }

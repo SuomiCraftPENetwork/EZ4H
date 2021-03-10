@@ -6,7 +6,7 @@
 
     <groupId>me.liuli.ez4h</groupId>
     <artifactId>EZ4H</artifactId>
-    <version>1.0</version>
+    <version>0.3-scpe1</version>
 
     <properties>
         <log4j2.version>2.13.3</log4j2.version>

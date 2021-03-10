@@ -21,7 +21,7 @@ public class CommandManager {
                 throwable.printStackTrace();
             }
         } else {
-            client.sendAlert("Command Not Found!Type `help for help");
+            client.sendAlert("Command not found! Type 'help' for help");
         }
     }
 

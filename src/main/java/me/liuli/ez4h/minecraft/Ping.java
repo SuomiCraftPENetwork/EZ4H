@@ -19,7 +19,7 @@ import java.net.InetSocketAddress;
 public class Ping {
     @Setter
     @Getter
-    private static TextMessage description = new TextMessage("SERVER DESCRIPTION");
+    private static TextMessage description = new TextMessage("\u00A7cFailed to load server info");
 
     public Ping(Session session) {
         new Thread(new PingThread(session)).start();
@@ -45,7 +45,7 @@ class PingThread implements Runnable {
                     sendPingData(session, new ServerStatusInfo(
                             new VersionInfo("EZ4H", session.getFlag(MinecraftConstants.PROTOCOL_KEY)),
                             new PlayerInfo(0, 0, new GameProfile[0]),
-                            new TextMessage("§eA EZ4H Proxied Server!\n§cPING FAILED:" + throwable.getLocalizedMessage()),
+                            new TextMessage("\u00A7eProxy\n\u00A7cPing failed: " + throwable.getLocalizedMessage()),
                             null
                     ));
                     return;
@@ -66,7 +66,7 @@ class PingThread implements Runnable {
             sendPingData(session, new ServerStatusInfo(
                     new VersionInfo("EZ4H", session.getFlag(MinecraftConstants.PROTOCOL_KEY)),
                     new PlayerInfo(0, 0, new GameProfile[0]),
-                    new TextMessage("§eA EZ4H Proxied Server!\n§cPING FAILED:" + e.getLocalizedMessage()),
+                    new TextMessage("\u00A7eProxy\n\u00A7cPing failed: " + e.getLocalizedMessage()),
                     null
             ));
         }

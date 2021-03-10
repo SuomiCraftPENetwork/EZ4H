@@ -50,10 +50,9 @@ public class JavaServer {
                             WorldType.CUSTOMIZED,
                             true
                     );
-                    ServerPlayerPositionRotationPacket serverPlayerPositionRotationPacket = new ServerPlayerPositionRotationPacket(0, 70, 0, 90, 90, 1);
                     session.send(serverJoinGamePacket);
-                    session.send(serverPlayerPositionRotationPacket);
-                    session.addListener(new FakeServer(session, profile.getName()));
+                    session.send(new ServerPlayerPositionRotationPacket(0, 70, 0, 90, 90, 1));
+                    //session.addListener(new FakeServer(session, profile.getName()));
                 }
             }
         });
@@ -73,7 +72,7 @@ public class JavaServer {
                     Session session = event.getSession();
                     GameProfile profile = session.getFlag(MinecraftConstants.PROFILE_KEY);
                     Client client = EZ4H.removeClient(profile.getName());
-                    EZ4H.getLogger().info(profile.getName() + "[" + session.getHost() + ":" + session.getPort() + "] QUITED.");
+                    EZ4H.getLogger().info(profile.getName() + "[" + session.getHost() + ":" + session.getPort() + "] disconnected");
                     if (client != null) {
                         client.disconnectBedrock();
                     } else {

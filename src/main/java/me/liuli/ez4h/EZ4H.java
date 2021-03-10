@@ -13,7 +13,6 @@ import me.liuli.ez4h.minecraft.auth.AuthUtils;
 import me.liuli.ez4h.translators.BedrockTranslator;
 import me.liuli.ez4h.translators.JavaTranslator;
 import me.liuli.ez4h.utils.FileUtil;
-import me.liuli.ez4h.utils.MetricsLite;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +28,7 @@ public class EZ4H {
     @Getter
     private static final String name = "EZ4H";
     @Getter
-    private static final String version = "0.3";
+    private static final String version = "0.3-scpe1";
     @Getter
     private static final long startTime = System.currentTimeMillis();
     @Getter
@@ -54,16 +53,10 @@ public class EZ4H {
 
     public static void main(String[] args) {
         logger = LogManager.getLogger(EZ4H.class);
-        logger.info("Loading EZ4H v" + version);
-
-        logger.info("Init files...");
+        logger.info("Loading EZ4H v" + version + "...");
         initFile();
-        logger.info("Init Protocol...");
         initProtocol();
-        logger.info("Loading things...");
-        //https://bstats.org/plugin/bukkit/EZ4H/10109
-        new MetricsLite("EZ4H", 10109);
-        logger.info("Done!(" + (System.currentTimeMillis() - startTime) + " ms)");
+        logger.info("Done! (" + (System.currentTimeMillis() - startTime) + " ms)");
     }
 
     private static void initFile() {
@@ -72,14 +65,14 @@ public class EZ4H {
             FileUtil.writeFile("./config.json", FileUtil.getTextFromResource("resources/config.json"));
         }
         configManager = new ConfigManager(JSONObject.parseObject(FileUtil.readFile(new File("./config.json"))));
-
         if (debugManager.enableDebug()) {
-            logger.warn("Debug Mode Enabled in Config");
+            logger.warn("Debug logging enabled");
             Configurator.setRootLevel(Level.DEBUG);
         }
     }
 
     private static void initProtocol() {
+        logger.debug("Loading protocol...");
         //register translators
         translatorManager = new TranslatorManager();
         {

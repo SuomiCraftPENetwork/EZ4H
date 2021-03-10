@@ -72,7 +72,7 @@ public class AddEntityPacketTranslator implements BedrockTranslator {
             }
         } else {
             //warn at console
-            EZ4H.getLogger().warn("Can't translate entity with name " + prepareEntityName(packet.getIdentifier()) + " for player " + client.getPlayer().getName());
+            EZ4H.getLogger().warn("Can't translate entity with name " + prepareEntityName(packet.getIdentifier()) + " for " + client.getPlayer().getName());
 
             //add a fakeplayer to replace this unknown entity
             UUID uuid = BedrockUtil.getUUID(packet.getRuntimeEntityId());
