@@ -1,5 +1,5 @@
 {
-  "je_host": "127.0.0.1",
+  "je_host": "0.0.0.0",
   "je_port": 25565,
   "be_host": "suomicraftpe.tk",
   "be_port": 19132,
