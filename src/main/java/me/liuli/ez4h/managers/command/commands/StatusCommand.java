@@ -36,10 +36,10 @@ public class StatusCommand implements CommandBase {
             usageColor = "§e";
         }
         client.sendMessage("§bUsed memory: " + usageColor + usedMB + " MB. (" + usage + "%)");
-        client.sendMessage("§bTotal memory: §c" + totalMB + " MB.");
-        client.sendMessage("§bMaximum VM memory: §c" + maxMB + " MB.");
+        client.sendMessage("§bTotal memory: §c" + totalMB + " MB");
+        client.sendMessage("§bMaximum VM memory: §c" + maxMB + " MB");
         client.sendMessage("§bAvailable processors: §a" + runtime.availableProcessors());
-        client.sendMessage("§bPlayers: §a" + EZ4H.getOnlinePlayers() + " online.");
+        client.sendMessage("§bPlayers: §a" + EZ4H.getOnlinePlayers() + " online");
     }
 
     private String formatUptime(long uptime) {

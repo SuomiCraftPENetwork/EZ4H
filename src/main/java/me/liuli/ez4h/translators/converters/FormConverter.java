@@ -30,33 +30,33 @@ public class FormConverter {
 
     public void showModalForm(Client client, JSONObject formJson) {
         client.getData().setForm(new Form(Form.Type.MODAL, 0, formJson));
-        client.sendAlert("You Received A Modal FormUI from the server.");
+        client.sendAlert("You Received A Modal FormUI from the server");
         client.sendMessage("Title:" + formJson.getString("title"));
         client.sendMessage("Content:" + formJson.getString("content"));
         client.sendMessage("Button1:" + formJson.getString("button1"));
         client.sendMessage("Button2:" + formJson.getString("button2"));
-        client.sendMessage("\nUse `form choose <1/2> to click button.");
-        client.sendMessage("Use `form close to close the window.");
+        client.sendMessage("\nUse `form choose <1/2> to click button");
+        client.sendMessage("Use `form close to close the window");
     }
 
     public void showSimpleForm(Client client, JSONObject formJson) {
         JSONArray buttons = formJson.getJSONArray("buttons");
         client.getData().setForm(new Form(Form.Type.SIMPLE, buttons.size(), formJson));
-        client.sendAlert("You Received A Simple FormUI from the server.");
+        client.sendAlert("You Received A Simple FormUI from the server");
         client.sendMessage("Title:" + formJson.getString("title"));
         client.sendMessage("Content:" + formJson.getString("content"));
         client.sendMessage("Buttons:");
         for (int i = 0; i < buttons.size(); i++) {
             client.sendMessage(i + ": " + buttons.getJSONObject(i).getString("text"));
         }
-        client.sendMessage("\nUse `form choose <index> to click button.");
-        client.sendMessage("Use `form close to close the window.");
+        client.sendMessage("\nUse `form choose <index> to click button");
+        client.sendMessage("Use `form close to close the window");
     }
 
     public void showCustomForm(Client client, JSONObject formJson) {
         JSONArray contents = formJson.getJSONArray("content"), defaults = new JSONArray(), types = new JSONArray();
         client.getData().setForm(new Form(Form.Type.CUSTOM, contents.size(), formJson));
-        client.sendAlert("You Received A Custom FormUI from the server.");
+        client.sendAlert("You Received A Custom FormUI from the server");
         client.sendMessage("Title:" + formJson.getString("title"));
         for (int i = 0; i < contents.size(); i++) {
             JSONObject singleObject = contents.getJSONObject(i);
@@ -93,9 +93,9 @@ public class FormConverter {
             types.add(i, singleObject.getString("type"));
             client.sendMessage(message.toString());
         }
-        client.sendMessage("\nUse `form submit to submit the form.");
-        client.sendMessage("Use `form value <index> view the value of the form.");
-        client.sendMessage("Use `form close to close the window.");
+        client.sendMessage("\nUse `form submit to submit the form");
+        client.sendMessage("Use `form value <index> view the value of the form");
+        client.sendMessage("Use `form close to close the window");
         formJson.put("values", defaults);
         formJson.put("types", types);
     }

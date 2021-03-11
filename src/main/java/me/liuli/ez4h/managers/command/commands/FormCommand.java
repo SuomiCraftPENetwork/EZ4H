@@ -14,7 +14,7 @@ public class FormCommand implements CommandBase {
 
     @Override
     public String getHelpMessage() {
-        return "Form Control Command.";
+        return "Form Control Command";
     }
 
     @Override
@@ -47,13 +47,13 @@ public class FormCommand implements CommandBase {
                 reqPacket.setFormId(formData.data.getInteger("id"));
                 int index = new Integer(args[1]);
                 if (index >= formData.array) {
-                    client.sendAlert("[ERROR]Array Outside The Bound Of Array.");
+                    client.sendAlert("[ERROR] Array Outside The Bound Of Array");
                     return;
                 }
                 reqPacket.setFormData(index + "");
                 client.sendPacket(reqPacket);
                 client.getData().setForm(null);
-                client.sendAlert("Form Result Bound To The Server.");
+                client.sendAlert("Form Result Bound To The Server");
                 break;
             }
             case "close": {
@@ -62,7 +62,7 @@ public class FormCommand implements CommandBase {
                 reqPacket.setFormData(null);
                 client.sendPacket(reqPacket);
                 client.getData().setForm(null);
-                client.sendAlert("Form Closed.");
+                client.sendAlert("Form Closed");
                 break;
             }
             case "list": {
@@ -94,7 +94,7 @@ public class FormCommand implements CommandBase {
                 }
                 client.sendPacket(reqPacket);
                 client.getData().setForm(null);
-                client.sendAlert("Form Result Bound To The Server.");
+                client.sendAlert("Form Result Bound To The Server");
                 break;
             }
             case "close": {
@@ -103,7 +103,7 @@ public class FormCommand implements CommandBase {
                 reqPacket.setFormData(null);
                 client.sendPacket(reqPacket);
                 client.getData().setForm(null);
-                client.sendAlert("Form Closed.");
+                client.sendAlert("Form Closed");
                 break;
             }
             default: {
@@ -119,11 +119,11 @@ public class FormCommand implements CommandBase {
             case "input": {
                 int index = new Integer(args[1]);
                 if (index >= formData.array) {
-                    client.sendAlert("[ERROR]Array Outside The Bound Of Array.");
+                    client.sendAlert("[ERROR] Array Outside The Bound Of Array");
                     return;
                 }
                 if (!formData.data.getJSONArray("types").getString(index).equals(args[0])) {
-                    client.sendAlert("Invalid type.");
+                    client.sendAlert("Invalid type");
                     return;
                 }
                 formData.data.getJSONArray("values").set(index, args[2]);
@@ -133,11 +133,11 @@ public class FormCommand implements CommandBase {
             case "toggle": {
                 int index = new Integer(args[1]);
                 if (index >= formData.array) {
-                    client.sendAlert("[ERROR]Array Outside The Bound Of Array.");
+                    client.sendAlert("[ERROR] Array Outside The Bound Of Array");
                     return;
                 }
                 if (!formData.data.getJSONArray("types").getString(index).equals(args[0])) {
-                    client.sendAlert("Invalid type.");
+                    client.sendAlert("Invalid type");
                     return;
                 }
                 if (args[2].equals("true")) {
@@ -151,11 +151,11 @@ public class FormCommand implements CommandBase {
             case "view-choose": {
                 int index = new Integer(args[1]);
                 if (index >= formData.array) {
-                    client.sendAlert("[ERROR]Array Outside The Bound Of Array.");
+                    client.sendAlert("[ERROR] Array Outside The Bound Of Array");
                     return;
                 }
                 if (!formData.data.getJSONArray("types").getString(index).equals("choose")) {
-                    client.sendAlert("Invalid type.");
+                    client.sendAlert("Invalid type");
                     return;
                 }
                 JSONArray contentJson = formData.data.getJSONArray("content").getJSONObject(index).getJSONArray("options");
@@ -170,11 +170,11 @@ public class FormCommand implements CommandBase {
             case "choose": {
                 int index = new Integer(args[1]);
                 if (index >= formData.array) {
-                    client.sendAlert("[ERROR]Array Outside The Bound Of Array.");
+                    client.sendAlert("[ERROR] Array Outside The Bound Of Array");
                     return;
                 }
                 if (!formData.data.getJSONArray("types").getString(index).equals(args[0])) {
-                    client.sendAlert("Invalid type.");
+                    client.sendAlert("Invalid type");
                     return;
                 }
                 int choose = new Integer(args[1]);
@@ -185,11 +185,11 @@ public class FormCommand implements CommandBase {
             case "slider": {
                 int index = new Integer(args[1]);
                 if (index >= formData.array) {
-                    client.sendAlert("[ERROR]Array Outside The Bound Of Array.");
+                    client.sendAlert("[ERROR] Array Outside The Bound Of Array");
                     return;
                 }
                 if (!formData.data.getJSONArray("types").getString(index).equals(args[0])) {
-                    client.sendAlert("Invalid type.");
+                    client.sendAlert("Invalid type");
                     return;
                 }
                 double value = new Double(args[2]);
@@ -203,7 +203,7 @@ public class FormCommand implements CommandBase {
                 reqPacket.setFormData(formData.data.getJSONArray("values").toJSONString());
                 client.sendPacket(reqPacket);
                 client.getData().setForm(null);
-                client.sendAlert("Form Submitted.");
+                client.sendAlert("Form Submitted");
                 break;
             }
             case "value": {
@@ -217,13 +217,13 @@ public class FormCommand implements CommandBase {
                 reqPacket.setFormData(null);
                 client.sendPacket(reqPacket);
                 client.getData().setForm(null);
-                client.sendAlert("Form Closed.");
+                client.sendAlert("Form Closed");
                 break;
             }
             default: {
-                client.sendAlert("Use `form submit to submit the form.");
-                client.sendAlert("Use `form value <index> view the value of the form.");
-                client.sendAlert("Use `form close to close the window.");
+                client.sendAlert("Use `form submit to submit the form");
+                client.sendAlert("Use `form value <index> view the value of the form");
+                client.sendAlert("Use `form close to close the window");
                 break;
             }
         }

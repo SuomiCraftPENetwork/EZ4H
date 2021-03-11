@@ -22,7 +22,7 @@ public class FakeServer extends SessionAdapter {
             try {
                 session.send(new ServerTitlePacket(5, 10, 5));
                 session.send(new ServerTitlePacket(TitleAction.TITLE, "§a§lTrying AutoLogin"));
-                session.send(new ServerTitlePacket(TitleAction.SUBTITLE, "wait few seconds...."));
+                session.send(new ServerTitlePacket(TitleAction.SUBTITLE, "Wait a few seconds...."));
                 EZ4H.getAuthManager().getAccessTokens().put(playerName, EZ4H.getAuthManager().getXboxLogin().getAccessToken(account.getString("username"), account.getString("password")));
                 session.disconnect("§aAutoLogin successful!\n§fPlease RECONNECT To The Server!");
             } catch (Exception e) {
@@ -68,7 +68,7 @@ public class FakeServer extends SessionAdapter {
             try {
                 runnable.session.send(new ServerTitlePacket(5, 10, 5));
                 runnable.session.send(new ServerTitlePacket(TitleAction.TITLE, "§a§lAuthenticated"));
-                runnable.session.send(new ServerTitlePacket(TitleAction.SUBTITLE, "wait few seconds...."));
+                runnable.session.send(new ServerTitlePacket(TitleAction.SUBTITLE, "Wait a few seconds...."));
                 setAuth();
                 EZ4H.getAuthManager().getAccessTokens().put(playerName, EZ4H.getAuthManager().getXboxLogin().getAccessToken(message[0], message[1]));
                 if (canAutoLogin) {
@@ -94,7 +94,7 @@ class AuthAlertThread implements Runnable {
                 if (afkCount >= 20) {
                     session.send(new ServerTitlePacket(5, 10, 5));
                     session.send(new ServerTitlePacket(TitleAction.TITLE, "§e§lAre You AFK?"));
-                    session.send(new ServerTitlePacket(TitleAction.SUBTITLE, "Kicked For AFK."));
+                    session.send(new ServerTitlePacket(TitleAction.SUBTITLE, "Kicked For AFK"));
                     Thread.sleep(500);
                     session.disconnect("§eAre You AFK?");
                 }

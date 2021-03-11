@@ -17,7 +17,7 @@ public class CommandManager {
             try {
                 commandBase.exec(args, client);
             } catch (Throwable throwable) {
-                client.sendAlert("An error occurred while running this command.");
+                client.sendAlert("An error occurred while running this command");
                 throwable.printStackTrace();
             }
         } else {
