@@ -75,9 +75,7 @@ public class Client {
 
                 this.bedrockSession = session;
                 session.setPacketCodec(EZ4H.getBedrockCodec());
-                session.addDisconnectHandler((reason) -> {
-                    event.getSession().disconnect("Raknet Disconnect! Please Check your bedrock server!");
-                });
+                session.addDisconnectHandler((reason) -> event.getSession().disconnect("[Proxy] Lost connection to the server"));
 
                 bedrockSession.setBatchHandler(new BedrockBatchHandler(clientM));
                 bedrockSession.setLogging(false);
