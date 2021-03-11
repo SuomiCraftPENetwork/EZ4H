@@ -46,7 +46,13 @@ public class AddEntityPacketTranslator implements BedrockTranslator {
 
         JSONObject entityData = entityMap.getJSONObject(prepareEntityName(packet.getIdentifier()));
         if (entityData != null && !entityData.getString("type").equals("disabled")) {
-            String name = entityData.getString("name").toUpperCase();
+            String name = entityData.getString("name");
+
+            boolean nullName = false;
+            if (name != null) name = name.toUpperCase();
+            else nullName = true;
+            //System.out.println(name);
+
             switch (entityData.getString("type")) {
                 case "mob": {
                     Vector3f rotation = packet.getRotation(),
@@ -57,7 +63,7 @@ public class AddEntityPacketTranslator implements BedrockTranslator {
                 }
                 case "object": {
                     Vector3f rotation = packet.getRotation(), motion = packet.getMotion();
-                    client.sendPacket(new ServerSpawnObjectPacket((int) packet.getRuntimeEntityId(), BedrockUtil.getUUID(packet.getRuntimeEntityId()), ObjectType.valueOf(name), position.getX(), position.getY() + 1.62, position.getZ(), rotation.getY(), rotation.getX(), motion.getX(), motion.getY(), motion.getZ()));
+                    client.sendPacket(new ServerSpawnObjectPacket((int) packet.getRuntimeEntityId(), BedrockUtil.getUUID(packet.getRuntimeEntityId()), nullName ? ObjectType.SHULKER_BULLET : ObjectType.valueOf(name), position.getX(), position.getY() + 1.62, position.getZ(), rotation.getY(), rotation.getX(), motion.getX(), motion.getY(), motion.getZ()));
                     EZ4H.getConverterManager().getMetadataConverter().convert(packet.getMetadata(), client, (int) packet.getRuntimeEntityId());
                     break;
                 }
