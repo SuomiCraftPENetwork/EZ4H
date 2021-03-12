@@ -19,7 +19,10 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.reflections.Reflections;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -51,6 +54,8 @@ public class EZ4H {
     @Setter
     private static DebugManager debugManager;
 
+    public static BufferedImage SCPE_ICON;
+
     public static void main(String[] args) {
         logger = LogManager.getLogger(EZ4H.class);
         logger.info("Loading EZ4H v" + version);
@@ -60,7 +65,11 @@ public class EZ4H {
     }
 
     private static void initFile() {
-        new File("./data").mkdir();
+        try {
+            SCPE_ICON = ImageIO.read(new URL("http://suomicraftpe.tk/content/icon64.png"));
+        } catch (Exception ex) {
+            logger.error("Failed to load server icon", ex);
+        }
         if (!new File("./config.json").exists()) {
             FileUtil.writeFile("./config.json", FileUtil.getTextFromResource("resources/config.json"));
         }
@@ -68,6 +77,9 @@ public class EZ4H {
         if (debugManager.enableDebug()) {
             logger.warn("Debug logging enabled");
             Configurator.setRootLevel(Level.DEBUG);
+        }
+        if (getConfigManager().isAutoLogin()) {
+            new File("./data").mkdir();
         }
     }
 

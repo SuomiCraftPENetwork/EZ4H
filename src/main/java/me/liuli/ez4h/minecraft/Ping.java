@@ -56,7 +56,7 @@ class PingThread implements Runnable {
                         new VersionInfo("EZ4H", session.getFlag(MinecraftConstants.PROTOCOL_KEY)),
                         new PlayerInfo(pong.getMaximumPlayerCount(), pong.getPlayerCount(), new GameProfile[0]),
                         Ping.getDescription(),
-                        null
+                        EZ4H.SCPE_ICON
                 ));
                 client.close();
             }).join();
