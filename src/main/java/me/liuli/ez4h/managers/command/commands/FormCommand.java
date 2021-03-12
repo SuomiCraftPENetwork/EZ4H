@@ -223,7 +223,7 @@ public class FormCommand implements CommandBase {
             default: {
                 client.sendAlert("Use `form submit to submit the form");
                 client.sendAlert("Use `form value <index> to view the value of the form");
-                client.sendAlert("Use `form close to close the window");
+                client.sendAlert("Use `form close to close the form");
                 break;
             }
         }
