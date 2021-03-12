@@ -92,13 +92,13 @@ public class Client {
                             offlineLogin();
                         }
                     } catch (Throwable t) {
-                        javaSession.disconnect("LOGIN ERROR\n" + t.toString());
+                        javaSession.disconnect("\u00A7cLOGIN ERROR\n" + t.toString());
                         t.printStackTrace();
                     }
                 }).start();
             }).join();
         } catch (Exception e) {
-            event.getSession().disconnect("EZ4H ERROR!\nCaused by " + e.getLocalizedMessage());
+            event.getSession().disconnect("\u00A7cEZ4H ERROR\nCaused by " + e.getLocalizedMessage());
             if (bedrockSession != null) {
                 bedrockSession.disconnect();
             }

@@ -19,7 +19,7 @@ public class StatusCommand implements CommandBase {
 
     @Override
     public void exec(String[] args, Client client) {
-        client.sendMessage("§a---- §fServer status §a----");
+        client.sendMessage("§a---- §fProxy Status §a----");
         long time = System.currentTimeMillis() - EZ4H.getStartTime();
         client.sendMessage("§bUptime: " + formatUptime(time));
         client.sendMessage("§bThread count: §a" + Thread.getAllStackTraces().size());

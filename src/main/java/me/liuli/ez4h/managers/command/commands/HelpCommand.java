@@ -15,13 +15,13 @@ public class HelpCommand implements CommandBase {
 
     @Override
     public String getHelpMessage() {
-        return "Show a list of commands";
+        return "Show available commands";
     }
 
     @Override
     public void exec(String[] args, Client client) {
         Set<Map.Entry<String, CommandBase>> entrySet = EZ4H.getCommandManager().getCommandMap().entrySet();
-        client.sendAlert("EZ4H COMMANDS(" + entrySet.size() + " TOTAL)");
+        client.sendAlert("EZ4H commands (" + entrySet.size() + "): ");
         for (Map.Entry<String, CommandBase> entry : entrySet) {
             client.sendMessage("`" + entry.getKey() + " - " + entry.getValue().getHelpMessage());
         }
