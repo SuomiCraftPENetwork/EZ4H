@@ -300,7 +300,7 @@ public class Client {
         skinData.put("CapeImageHeight", 0);
         skinData.put("CapeImageWidth", 0);
         skinData.put("CapeOnClassicSkin", false);
-        skinData.put("ClientRandomId", new Random().nextLong());//erm? i hope this works?
+        skinData.put("ClientRandomId", RandUtil.random.nextLong());//erm? i hope this works?
         skinData.put("CurrentInputMode", 1);
         skinData.put("DefaultInputMode", 1);
         skinData.put("DeviceId", EZ4H.getConfigManager().getAuthKey() + UUID.randomUUID().toString());

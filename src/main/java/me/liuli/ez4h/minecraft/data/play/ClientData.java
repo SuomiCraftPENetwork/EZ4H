@@ -20,10 +20,10 @@ public class ClientData {
     private final Weather weather;
     @Getter
     private final Inventory inventory;
-    private final Map<Integer, Entity> entitys = new HashMap<>();
+    private final Map<Integer, Entity> entities = new HashMap<>();
     @Getter
     @Setter
-    private int scoreSortorder = 0;
+    private int scoreSortOrder = 0;
     @Getter
     @Setter
     private Form form = null;
@@ -44,15 +44,15 @@ public class ClientData {
     }
 
     public void addEntity(int id, Entity entity) {
-        entitys.put(id, entity);
+        entities.put(id, entity);
     }
 
     public Entity removeEntity(int id) {
-        return entitys.remove(id);
+        return entities.remove(id);
     }
 
     public Entity getEntity(int id) {
-        return entitys.get(id);
+        return entities.get(id);
     }
 
     public Entity getEntity(long id) {

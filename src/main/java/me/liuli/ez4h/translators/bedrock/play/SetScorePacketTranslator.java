@@ -25,7 +25,7 @@ public class SetScorePacketTranslator implements BedrockTranslator {
                 default: {
                     int score = scoreInfo.getScore();
                     //JE dont support sortorder :sadface:
-                    if (client.getData().getScoreSortorder() == 0) {
+                    if (client.getData().getScoreSortOrder() == 0) {
                         score = -score;
                     }
                     client.sendPacket(new ServerUpdateScorePacket(BedrockUtil.lengthCutter(scoreInfo.getName(), 40), scoreInfo.getObjectiveId(), score));

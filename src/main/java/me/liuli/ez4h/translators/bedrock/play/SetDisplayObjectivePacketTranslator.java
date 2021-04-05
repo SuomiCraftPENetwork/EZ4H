@@ -25,7 +25,7 @@ public class SetDisplayObjectivePacketTranslator implements BedrockTranslator {
 
         switch (packet.getDisplaySlot()) {
             case "sidebar": {
-                client.getData().setScoreSortorder(packet.getSortOrder());
+                client.getData().setScoreSortOrder(packet.getSortOrder());
                 client.sendPacket(new ServerScoreboardObjectivePacket(packet.getObjectiveId(), ObjectiveAction.ADD, name, ScoreType.INTEGER));
                 client.sendPacket(new ServerDisplayScoreboardPacket(ScoreboardPosition.SIDEBAR, packet.getObjectiveId()));
                 break;

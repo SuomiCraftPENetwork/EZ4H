@@ -110,6 +110,7 @@ public class TextPacketTranslator implements BedrockTranslator {
                 .replaceAll("§d", "")
                 .replaceAll("§e", "")
                 .replaceAll("§f", "")
+                .replaceAll("§g", "")
                 .replaceAll("§k", "")
                 .replaceAll("§l", "")
                 .replaceAll("§m", "")
